@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Storage</title>
+    <style>
+        .contener{
+            background-color: gray;
+            border: 2px solid black;
+            width: 50vh;
+            text-align: left;
+        }
+        table{
+            text-transform: capitalize;
+            font-size: 22px;
+            text-align: center;
+        }
+        label{
+            font-size: 22px;
+            color: white;
+            margin-left: 2.5%;
+        }
+        input{
+            color: black;
+            width: 320px;
+            margin-left: 2.5%;
+        }
+        button{
+            margin-left: 2.5%;
+            width: 100px;
+            border-radius: 12px;
+            height: 30px;
+        }
+        .tabcontainer{
+           width: 70vh;
+        }
+    </style>
+</head>
+<body>
+    <center>
+<div class="tabcontainermain">
+    <div class="tabcontainer">
+        <table border="2" id="display">
+            <tr><th>Name</th><th>Age</th><th>Grade</th></tr>
+        </table>
+    </div>
+    <hr>
+    <div class="contener">
+        
+        <label for="">Name : <br><input required type="text" id="nameinput" onfocus="focuss('nameinput')" onblur="blurs('nameinput')"></label><br>
+        <label for="">Age : <br><input required type="number" id="ageinput"  onfocus="focuss('ageinput')" onblur="blurs('ageinput')"></label><br>
+        <label for="">Grade : <br><input required type="text" id="gradeinput"  onfocus="focuss('gradeinput')" onblur="blurs('gradeinput')"></label><br><br>
+        <button id="add" onclick="return addrowscolum(event)" onmouseover="movers()" onmouseout="mout()">Add</button>
+        <button onclick="remvrowscolum()" >Remove</button>
+        <!--<button onclick="addrowscolum()">Edit</button><br><br> -->
+    </div>
+</div>
+</center>
+    <h1 id="showoutput"></h1>
+   
+    <script>
+        function movers(){
+            document.getElementById('add').style.background='green';
+            document.getElementById('add').style.color='white';
+            document.getElementById('add').innerHTML= 'Click Me';
+            document.getElementById('add').style.fontSize= '20px';
+
+        }
+        function mout(){
+            document.getElementById('add').style.background='white';
+            document.getElementById('add').style.color='black';
+            document.getElementById('add').innerHTML= 'Add';
+
+
+        }
+        function focuss(X){
+            document.getElementById(X).style.background= 'orange';
+            document.getElementById(X).style.color= 'White';
+
+        }
+        function blurs(Y){
+            document.getElementById(Y).style.background= 'white';
+            document.getElementById(Y).style.color= 'black'
+
+        }
+        // var bttn  = document.getElementById('add').value;
+        // bttn.addEventListener('click',addrowscolum);
+        // var b = true;
+        // var idNames = 0;
+        var rows= document.getElementById('display').innerHTML;
+        function addrowscolum(e){
+            e.preventDefault();
+            let name = document.getElementById('nameinput').value;
+            let age = document.getElementById('ageinput').value;
+            let grade= document.getElementById('gradeinput').value;
+            // var rows =;
+            if(name=="" || age=="" || grade==""){
+                    window.alert('Please fill all the Boxes');    
+                    document.getElementById('add').style.border = '2px solid red'   ;
+            }
+            else{
+                rows+='<tr id="">'+'<td>'+name+'</td>'+'<td>'+age+'</td>'+'<td>'+grade+'</td>'+'</tr>';
+                document.getElementById('display').innerHTML=rows;
+                document.getElementById('nameinput').value="";
+                document.getElementById('ageinput').value="";
+                document.getElementById('gradeinput').value="";
+                // idNames++ ;
+                // console.log(rows);
+                // if(b){
+                // document.getElementById('add').style.backgroundColor = 'green';
+                // b=false;
+                // }
+                // else{
+                // document.getElementById('add').style.backgroundColor = 'white';
+                // document.getElementById('add').style.color = 'black';
+                // b=true;
+                // }
+            }
+            
+               
+        } 
+        function remvrowscolum(){
+            // document.getElementById('myrow');
+
+            // window.alert('This button is not working Now.');
+            // document.getElementById(idNames-1).style.display="none";
+            let remove = rows;
+            remove = remove.slice(0,-51);
+            rows = remove;
+            document.getElementById('display').innerHTML= rows;
+            
+        }
+        
+        
+        // var name = document.getElementById('nameinput').value;
+        //   var  age = document.getElementById('ageinput').value;
+        //   var  classes = document.getElementById('classinput').value;
+        // //   if(!name || !age || !classes){
+        // //     window.alert('Please fill all the Boxes:')
+        // //     
+        // //   }
+        // if(name==""|| age=="" || classes==""){
+        //     window.alert('Please fill all the Boxes:')
+
+        // }
+        
+        
+        // var temp='<table border="2"><tr><th>Name</th><th>Age</th><th>Class</th></tr>';
+        //     // if(){
+        //         for(let i=1; i<=inputvaluesofname; i++){
+        //             temp = temp+'<tr>';
+        //             // for(let j=1; j<=inputvaluesofage.length; j++){
+        //             //     temp = temp+"<td>"+inputvaluesofname.length+"</td>";
+        //             // }
+        //             temp=temp+"<td>"+inputvaluesofname+"</td>";
+        //             temp=temp+'</tr>'; 
+        //         }
+        //     // }    
+        // temp=temp+"</table>" ;
+        // document.getElementById('showoutput').innerHTML=temp;
+    </script>
+</body>
+</html>
